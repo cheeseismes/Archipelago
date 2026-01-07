@@ -5,6 +5,7 @@ from worlds.AutoWorld import World, WebWorld
 
 from .Items import ALL_ITEMS, FF2_KEY_ITEMS, FF2_FILLER_ITEMS, get_item_name_to_id
 from .Locations import FF2_LOCATIONS, get_location_name_to_id, get_locations_by_region
+from .Rules import set_rules as set_world_rules
 
 
 class FF2NESWebWorld(WebWorld):
@@ -13,7 +14,7 @@ class FF2NESWebWorld(WebWorld):
         "Multiworld Setup Guide",
         "A guide to setting up Final Fantasy II NES for Archipelago multiworld.",
         "English",
-        "setup_en.md",
+        "setup_en. md",
         "setup/en",
         ["cheeseismes"]
     )]
@@ -22,7 +23,7 @@ class FF2NESWebWorld(WebWorld):
 class FF2NESWorld(World):
     """
     Final Fantasy II for the NES (1988) - Join Firion and the Wild Rose Rebellion
-    in their fight against the Palamecian Empire.  This randomizer shuffles key items,
+    in their fight against the Palamecian Empire. This randomizer shuffles key items,
     dungeons, and progression across the multiworld.
     """
 
@@ -85,15 +86,14 @@ class FF2NESWorld(World):
         if "Altair" in created_regions:
             menu_region.connect(created_regions["Altair"])
 
-        # For now, connect all regions to Altair (we'll add proper logic later)
+        # Connect all regions to Altair (rules handle access requirements)
         for region_name, region in created_regions.items():
             if region_name != "Altair":
                 created_regions["Altair"].connect(region)
 
     def set_rules(self) -> None:
         """Set access rules for locations."""
-        self.multiworld.completion_condition[self.player] = \
-            lambda state: state.can_reach("Pandaemonium", "Region", self.player)
+        set_world_rules(self)
 
     def get_filler_item_name(self) -> str:
         """Return a random filler item name."""
