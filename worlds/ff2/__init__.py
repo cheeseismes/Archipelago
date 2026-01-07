@@ -8,27 +8,27 @@ from .Locations import FF2_LOCATIONS, get_location_name_to_id, get_locations_by_
 from .Rules import set_rules as set_world_rules
 
 
-class FF2NESWebWorld(WebWorld):
+class FF2WebWorld(WebWorld):
     theme = "ice"
     tutorials = [Tutorial(
         "Multiworld Setup Guide",
-        "A guide to setting up Final Fantasy II NES for Archipelago multiworld.",
+        "A guide to setting up Final Fantasy II for Archipelago multiworld.",
         "English",
-        "setup_en. md",
+        "setup_en.md",
         "setup/en",
         ["cheeseismes"]
     )]
 
 
-class FF2NESWorld(World):
+class FF2World(World):
     """
     Final Fantasy II for the NES (1988) - Join Firion and the Wild Rose Rebellion
-    in their fight against the Palamecian Empire. This randomizer shuffles key items,
+    in their fight against the Palamecian Empire.  This randomizer shuffles key items,
     dungeons, and progression across the multiworld.
     """
 
-    game = "Final Fantasy II NES"
-    web = FF2NESWebWorld()
+    game = "Final Fantasy II"
+    web = FF2WebWorld()
 
     item_name_to_id: ClassVar[Dict[str, int]] = get_item_name_to_id()
     location_name_to_id: ClassVar[Dict[str, int]] = get_location_name_to_id()

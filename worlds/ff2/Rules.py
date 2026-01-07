@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 from worlds.generic.Rules import set_rule
 
 if TYPE_CHECKING:
-    from . import FF2NESWorld
+    from . import FF2World
 
 
 def has_ship(state, player: int) -> bool:
@@ -31,7 +31,7 @@ def has_mysidian_tower_access(state, player: int) -> bool:
     return has_ship(state, player) and state.has("Crystal Rod", player)
 
 
-def set_rules(world: "FF2NESWorld") -> None:
+def set_rules(world: "FF2World") -> None:
     player = world.player
     multiworld = world.multiworld
 
