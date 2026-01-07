@@ -70,6 +70,9 @@ FF2_LOCATIONS: Dict[str, FF2LocationData] = {
     "Pandaemonium - Chest 1": FF2LocationData(FF2_LOCATION_BASE_ID + 120, "Pandaemonium"),
     "Pandaemonium - Chest 2": FF2LocationData(FF2_LOCATION_BASE_ID + 121, "Pandaemonium"),
     "Pandaemonium - Masamune": FF2LocationData(FF2_LOCATION_BASE_ID + 122, "Pandaemonium"),
+
+    # === VICTORY ===
+    "Emperor Defeated": FF2LocationData(FF2_LOCATION_BASE_ID + 200, "Pandaemonium"),
 }
 
 

@@ -97,7 +97,12 @@ def set_rules(world: "FF2NESWorld") -> None:
         set_rule(multiworld.get_location(loc_name, player),
                  lambda state, p=player: has_airship(state, p))
 
-    # === COMPLETION CONDITION ===
-    # Must be able to reach Pandaemonium and have beaten the game
-    multiworld.completion_condition[player] = \
-        lambda state: has_airship(state, player)
+        # === VICTORY EVENT ===
+        set_rule(multiworld.get_location("Emperor Defeated", player),
+                 lambda state, p=player: (has_airship(state, p) and
+                                          state.has("White Dragon", p) and
+                                          state.has("Black Dragon", p)))
+
+        # === COMPLETION CONDITION ===
+        multiworld.completion_condition[player] = \
+            lambda state: state.can_reach("Emperor Defeated", "Location", player)
